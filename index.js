@@ -7,6 +7,13 @@ const app = express();
 app.use(express.static("public"));
 app.use(express.json({limit:"1MB"}));
 
+
+app.get('/', (req, res) => {
+    res.sendFile('index.html', path.join(__dirname, 'public'));
+})
+
+
+
 app.post("/save", (req, res) => {
   const text = req.body.text;
   const filePath = path.join(__dirname, "public", "text.txt");
